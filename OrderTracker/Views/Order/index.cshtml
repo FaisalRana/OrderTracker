@@ -1,0 +1,10 @@
+@using PackerTracker.Models;
+
+<h1>test</h1>
+<p>Things needed on a backpacking trip:</p>
+<ul>
+  @foreach (Item item in Model)
+  {
+    <li>@item.Description  Price:$@item.Price Available: @item.Available</li>
+  }
+</ul>
