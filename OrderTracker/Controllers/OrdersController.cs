@@ -6,15 +6,22 @@ namespace OrderTracker.Controllers
 {
   public class OrderController : Controller
   {
-    [HttpGet("/backpacking")]
-    public ActionResult Index()
+
+    [HttpGet("/vendors/{vendorId}/orders/new")]
+    public ActionResult New(int vendorId)
     {
-      // List<Order> newList = new List<Order>();
-      // List<Order> backpackingCatalogue = Order.GetAll();
-
-      List<Order> newList = Order.GetAll();
-      return View(newList);
+      Vendor vendor = Vendor.Find(vendorId);
+      return View(vendor);
     }
-
+  [HttpGet("/vendors/{vendorId}/orders/{orderId}")]
+    public ActionResult Show(int vendorId, int orderId)
+    {
+      Order order = Order.Find(orderId);
+      Vendor vendor = Vendor.Find(vendorId);
+      Dictionary<string, object> model = new Dictionary<string, object>();
+      model.Add("Order", order);
+      model.Add("vendor", vendor);
+      return View(model);
+    }
+    }
   }
-}

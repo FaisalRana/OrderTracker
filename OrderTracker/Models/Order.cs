@@ -1,27 +1,34 @@
 using System.Collections.Generic;
 
+
 namespace OrderTracker.Models
 {
   public class Order
   {
-    public string Name { get; set; }
+    public string Title { get; set; }
     public string Description { get; set; }
     public int Price  { get; set; }
-    public bool Available  { get; set; }
-    private static List<Order> orderList_ = new List<Order>();
+    public string Date  { get; set; }
+    public int Id { get; set;}
+    private static List<Order> _orderList = new List<Order>();
 
-  public Order(string description, int price, bool available, string name)
+  public Order(string title, string description, int price, string date)
     {
+      Title = title;
       Description = description;
-      Name = name;
       Price = price;
-      Available = available;
-      orderList_.Add(this);
+      Date = date;
+      Id = _orderList.Count;
+      _orderList.Add(this);
     }
 
   public static List<Order> GetAll()
     {
-      return orderList_;
+      return _orderList;
+    }
+    public static Order Find(int searchId)
+    {
+      return _orderList[searchId-1];
     }
   }
 }
