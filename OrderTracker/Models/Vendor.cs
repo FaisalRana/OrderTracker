@@ -11,19 +11,25 @@ namespace OrderTracker.Models
     public string Location { get; set; }
     public List<Order> Orders { get; set; }
 
-    public Vendor(string vendorName, string description, string location)
+    public Vendor(string vendorName, string vendorDescription, string vendorLocation)
     {
       Name = vendorName;
-      Description = description;
-      Location = location;
+      Description = vendorDescription;
+      Location = vendorLocation;
       _instances.Add(this);
-      Id = _instances.Count;
+      Id = _instances.Count - 1;
       Orders = new List<Order> {};
     }
       public static List<Vendor> GetAll()
     {
       return _instances;
     }
+      public static Vendor Find(int searchId)
+    {
+      return _instances[searchId];
+    }
+
+
 
   }
 }
