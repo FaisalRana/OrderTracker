@@ -1,0 +1,10 @@
+@using OrderTracker.Models;
+
+<h1>test</h1>
+<p>Here are all the orders with this vender :</p>
+<ul>
+  @foreach (Order order in Model)
+  {
+    <li>@order.Description  Price:$@order.Price Available: @order.Available</li>
+  }
+</ul>
