@@ -6,12 +6,14 @@
 {
   <h3>No vendors have been added yet!</h3>
 } 
+else {
 
 @foreach (Vendor vendor in Model)
 {
   <h3><a href='/vendors/@vendor.Id'>@vendor.Name</a></h3>
 }
-
+}
 <p><a href='/'>Return back to Splash Page</a></p>
+<p><a href='/vendors/new'>Add a new vendor</a></p>
 
 <ol>

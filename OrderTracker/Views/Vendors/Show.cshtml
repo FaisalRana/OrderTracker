@@ -1,13 +1,27 @@
 @using OrderTracker.Models;
 
-<h3>Here are all the Orders in this vendor:</h3>
+<h3>Here are all the orders in this vendor:</h3>
 
+@if (@Model["orders"].Count == 0) {
+
+  <p>There are no orders for this vendor</p>
+
+} 
+else { 
 <ol>
+  
 @foreach (Order order in @Model["orders"])
 {
-  <li><a href='/vendors/@Model["vendor"].Id/Orders/@order.Id'>@order.Description</a></li>
+  <li><a href='/vendors/@Model["vendor"].Id/Orders/@order.Id'>@order.Title</a></li>
 }
 </ol>
+}
+
+<h3>Here are all details regarding this vendor:</h3>
+<p>Name: @Model["vendor"].Name</p>
+<p>Description: @Model["vendor"].Description</p>
+<p>Location: @Model["vendor"].Location</p>
+<p>VendorId: @Model["vendor"].Id</p>
 
 <p><a href='/vendors/@Model["vendor"].Id/Orders/new'>Add a new Order</a></p>
 <p><a href='/vendors'>Return to vendor list</a></p>
